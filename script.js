@@ -22,7 +22,8 @@ wmsLayerCode_Pred = L.tileLayer.wms('https://www.geotests.net/geoserver/dumont/w
     format: 'image/png',
     transparent: true,
     tiled: true,
-    attribution: 'Données WMS © GeoServer',
+    opacity: 0.5, // Ajuste l'opacité entre 0 (transparent) et 1 (opaque)
+    attribution: 'Données WMS © GeoServer'
 }).addTo(map);
 
 // URL du flux WMS avec filtre CQL
@@ -32,7 +33,8 @@ wmsLayerCode = L.tileLayer.wms('https://www.geotests.net/geoserver/dumont/wms', 
     format: 'image/png',
     transparent: true,
     tiled: true,
-    attribution: 'Données WMS © GeoServer',
+    opacity: 0.5, // Ajuste l'opacité entre 0 (transparent) et 1 (opaque)
+    attribution: 'Données WMS © GeoServer'
 }).addTo(map);
 
 const overlayLayers = {
@@ -75,7 +77,8 @@ function updateWMSLayer(codes) {
                 format: 'image/png',
                 transparent: true,
                 tiled: true,
-                attribution: 'Données WMS © GeoServer',
+                opacity: 0.5, // Ajuste l'opacité entre 0 (transparent) et 1 (opaque)
+                attribution: 'Données WMS © GeoServer'
             }).addTo(map);
 
             wmsLayerCode_Pred = L.tileLayer.wms('https://www.geotests.net/geoserver/dumont/wms', {
@@ -84,7 +87,8 @@ function updateWMSLayer(codes) {
                 format: 'image/png',
                 transparent: true,
                 tiled: true,
-                attribution: 'Données WMS © GeoServer',
+                opacity: 0.5, // Ajuste l'opacité entre 0 (transparent) et 1 (opaque)
+                attribution: 'Données WMS © GeoServer'
             }).addTo(map);
         }
         else {
