@@ -4,15 +4,63 @@
     <meta charset="UTF-8"> <!-- Encodage de la page -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projet Télédétection</title>
-    <link rel="stylesheet" href="https://unpkg.com/ol@latest/ol.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css"> <!-- Lien vers le fichier CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3-layerswitcher/2.0.0/ol3-layerswitcher.css" />    <script src="https://unpkg.com/ol-layerswitcher@4.1.2"></script>
 </head>
 <body>
-    <h2>Projet Webmapping Alban Dumont</h2>
-    <div id="map"></div> <!-- Conteneur de la carte -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3-layerswitcher/2.0.0/ol3-layerswitcher.js"></script>
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>    
+    <!-- 🏷️ Titre -->
+    <div class="header">
+        <h3>Projet Webmapping Alban Dumont</h3>
+    </div>
+    <!-- 📝 Explications -->
+    <div class="explications">
+        La carte affiche 2 couches : BD Forêt et les essences forestières prédites, cliquer sur une Forêt pour obtenir des informations.
+        Les cartes sont issues du <a href="https://mlang.frama.io/cours-marc-lang/stable/sigmaM2_telea/sigmaM2_projet.html"> projet Télédétection</a>
+    </div>
+    <!-- 📌 Contenu principal : Sélecteur (gauche) + Carte (droite) -->
+    <div class="contenu">
+        
+        <!-- 🎛️ Sélecteur (Menu déroulant) -->
+        <div class="sidebar">
+            <h4>Veuillez choisir une ou plusieurs essences forestières : </h4>
+            <small>CTRL ou SHIFT pour une sélection multiple</small>
+            <select id="codeSelect" multiple size="19">
+                <option value="0">Toutes les essences</option>
+                <optgroup label="Feuillus">
+                    <option value="12">Chêne (12)</option>
+                    <option value="13">Robinier (13)</option>
+                    <option value="14">Peupleraie (14)</option>
+                    <option value="11">Autres feuillus (11)</option>
+                    <option value="15">Mélange de feuillus (15)</option>
+                    <option value="16">Feuillus en îlots (16)</option>
+                </optgroup>
+                <optgroup label="Conifères">
+                    <option value="23">Douglas (23)</option>
+                    <option value="24">Pin Laricio ou pin noir (24)</option>
+                    <option value="25">Pin Martime (25)</option>
+                    <option value="22">Autres pin (22)</option>
+                    <option value="21">Autres conifères autres que pin (21)</option>
+                    <option value="26">Mélange conifères (26)</option>
+                    <option value="27">Conifères en îlots (27)</option>
+                <optgroup label="Mélanges">
+                    <option value="28">Conifères prépondérants et feuillus (28)</option>
+                    <option value="29">Feuillus prépondérants et conifères (29)</option>
+                </optgroup>
+                </optgroup>
+            </select>
+            <p>Choix sélectionnés : <span id="selected-options">Aucun</span></p>
+            <button id="toggle-legend">Afficher/Masquer Légende</button>
+        </div>
+
+        <!-- 🗺️ Carte -->
+        <div class="carte">
+            <div id="map"></div> <!-- Conteneur de la carte -->
+        </div>
+        <div id="legend" style="position: absolute; bottom: 0px; right: 40px; background: transparent; padding: 5px; border: 1px solid black; z-index: 1000;">
+            <img id="legend-image" src="" alt="Légende" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <!-- jQuery pour AJAX -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script> <!-- Lien vers le fichier JS -->
 </body>
 </html>
