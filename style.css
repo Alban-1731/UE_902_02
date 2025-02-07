@@ -1,7 +1,69 @@
-@import url("https://cdn.jsdelivr.net/npm/ol-layerswitcher@4.0.0/dist/ol-layerswitcher.css");
+/* 🏗️ Mise en page générale avec CSS Grid */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto auto 1fr; /* Titre + Explications + Contenu */
+    height: 100vh;
+}
+
+/* 📌 Titre centré en haut */
+.header {
+    background-color: #007acc;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 📝 Section d'explications */
+.explications {
+    padding: 15px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* 📌 Conteneur principal : 2 colonnes (Sélecteur à gauche, Carte à droite) */
+.contenu {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 1/4 pour le sélecteur, 3/4 pour la carte */
+    gap: 10px;
+    padding: 15px;
+    height: 100%;
+}
+
+/* 🎛️ Colonne Gauche : Sélecteur */
+.sidebar {
+    background-color: #e0e0e0;
+    padding: 15px;
+}
+
+/* 🗺️ Colonne Droite : Carte */
+.carte {
+    background-color: #ddd;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🖥️ Adaptation mobile : Empiler les blocs */
+@media (max-width: 768px) {
+    .contenu {
+        grid-template-columns: 1fr; /* Une seule colonne */
+    }
+    .sidebar {
+        order: 2; /* Met le sélecteur en dessous de la carte */
+    }
+    .carte {
+        order: 1;
+    }
+}
 
 #map {
     width: 100%;
-    height: 500px;
+    height: 80vh;
     border: 2px solid black;
 }
